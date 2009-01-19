@@ -1,0 +1,59 @@
+RipTunes
+---------------------------------------------------------------------------------------
+RipTunes is a Python program which copy songs from ipods to your local machine.  It
+runs on Windows, Linux and Mac.
+
+Implementation
+---------------------------------------------------------------------------------------
+- Most similar programs out there read the iPod database file, I am just reading the
+  iPod as a regular filesystem.
+
+Limitations
+---------------------------------------------------------------------------------------
+I have only tested it on the following type of iPods:
+- iPod Mini Second generation
+- iPod Nano First, Third generation
+- iPod Classic Sixth generation
+
+It doesn't work on the iPhone, the folder which holds the songs are not visible.
+It's also possible that some songs with missing information or weird characters might
+not be read properly.
+
+Configuring and building:
+---------------------------------------------------------------------------------------
+It's a long list of pre-requisites but the same Python codes run on Windows, Linux and
+Mac.
+
+1. MinGW - http://sourceforge.net/project/showfiles.php?group_id=2435&package_id=240780
+2. Python 2.6.1 - http://www.python.org/download/releases/2.6.1/
+3. Qt OpenSource 4.4.3 - http://www.qtsoftware.com/downloads/opensource/appdev
+4. SIP 4.7.9 - http://www.riverbankcomputing.co.uk/software/sip/download
+   For Windows, working from C:\tools\sip-4.7.9:
+   - C:\tools\sip-4.7.9>python configure.py -p win32-g++
+   - C:\tools\sip-4.7.9>"C:\MinGW\bin\mingw32-make.exe"
+   - C:\tools\sip-4.7.9>"C:\MinGW\bin\mingw32-make.exe" install
+5. PyQt 4.4.4 - http://www.riverbankcomputing.co.uk/software/pyqt/download
+   For windows, the make stage takes a while,
+   - C:\tools\PyQt-win-gpl-4.4.4>C:\Qt\4.4.3\bin\qtvars.bat
+   - C:\tools\PyQt-win-gpl-4.4.4>C:\Python26\python.exe configure.py
+   - C:\tools\PyQt-win-gpl-4.4.4>"C:\MinGW\bin\mingw32-make.exe"
+   - C:\tools\PyQt-win-gpl-4.4.4>"C:\MinGW\bin\mingw32-make.exe" install
+6. Mutagen 1.15 - http://code.google.com/p/quodlibet/downloads/list
+7. Add C:\Qt\4.4.3\bin in your PATH if it's not there.
+
+Running
+---------------------------------------------------------------------------------------
+To run the program, double-click RipTunes.pyw
+
+Goal of this project
+---------------------------------------------------------------------------------------
+I just wanted a program which can copy songs from iPods which run on all 3 major platforms.
+I used Python and Qt because they are platform independent.  There are probably much
+better similar programs out there but they usually run only on one specific OS instead of
+the big three.
+
+This project also demonstrates my basic knowledge of:
+- OO programming
+- Python
+- Qt
+- Building and linking libraries

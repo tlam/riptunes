@@ -34,6 +34,11 @@ The dependencies are:
   make install
   }}}
   # Mutagen 1.15 - http://code.google.com/p/quodlibet/downloads/list
+  {{{
+  # For Linux,
+  python setup.py build
+  python setup.py install
+  }}}
   # Add `C:\Qt\4.4.3\bin` in your `PATH` if it's not there.
 
 = Running !RipTunes =

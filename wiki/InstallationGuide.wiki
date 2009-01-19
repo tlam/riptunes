@@ -29,4 +29,7 @@ The dependencies are:
   # Add `C:\Qt\4.4.3\bin` in your `PATH` if it's not there.
 
 = Running !RipTunes =
+===Windows===
 Double click `RipTunes.pyw`
+===Linux & Mac===
+{{{python RipTunes.pyw}}}

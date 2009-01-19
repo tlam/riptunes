@@ -27,6 +27,11 @@ The dependencies are:
   C:\tools\PyQt-win-gpl-4.4.4>C:\Python26\python.exe configure.py
   C:\tools\PyQt-win-gpl-4.4.4>"C:\MinGW\bin\mingw32-make.exe"
   C:\tools\PyQt-win-gpl-4.4.4>"C:\MinGW\bin\mingw32-make.exe" install
+
+  # For Linux, make sure that the version of Qt you want is in your PATH
+  python configure.py
+  make
+  make install
   }}}
   # Mutagen 1.15 - http://code.google.com/p/quodlibet/downloads/list
   # Add `C:\Qt\4.4.3\bin` in your `PATH` if it's not there.

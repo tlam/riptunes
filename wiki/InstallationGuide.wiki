@@ -6,12 +6,19 @@ The dependencies are:
   # MinGW - http://sourceforge.net/project/showfiles.php?group_id=2435&package_id=240780
   # Python 2.6.1 - http://www.python.org/download/releases/2.6.1/
   # Qt !OpenSource 4.4.3 - http://www.qtsoftware.com/downloads/opensource/appdev
+    # Windows: It is much faster to use the Qt installer.
+    # Linux: It takes a few hours to build on Linux, be patient.
   # SIP 4.7.9 - http://www.riverbankcomputing.co.uk/software/sip/download
   {{{
   # For Windows, working from C:\tools\sip-4.7.9:
   C:\tools\sip-4.7.9>python configure.py -p win32-g++
   C:\tools\sip-4.7.9>"C:\MinGW\bin\mingw32-make.exe"
   C:\tools\sip-4.7.9>"C:\MinGW\bin\mingw32-make.exe" install
+
+  # For Linux,
+  python configure.py
+  make
+  make install
   }}}
   # !PyQt 4.4.4 - http://www.riverbankcomputing.co.uk/software/pyqt/download
   {{{

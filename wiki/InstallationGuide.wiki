@@ -19,7 +19,7 @@ The dependencies are:
   C:\tools\sip-4.7.9>"C:\MinGW\bin\mingw32-make.exe"
   C:\tools\sip-4.7.9>"C:\MinGW\bin\mingw32-make.exe" install
   }}}
-  # PyQt 4.4.4 - http://www.riverbankcomputing.co.uk/software/pyqt/download
+  # !PyQt 4.4.4 - http://www.riverbankcomputing.co.uk/software/pyqt/download
   {{{
   # For windows, the make stage takes a while,
   C:\tools\PyQt-win-gpl-4.4.4>C:\Qt\4.4.3\bin\qtvars.bat

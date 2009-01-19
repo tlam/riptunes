@@ -1,5 +1,3 @@
-#Configure, build and run.
-
 = Configuration and Build =
 
 !RipTunes does have a long list of pre-requisites, a bit how all open source project does.  If there are no details on how to build some of the dependencies, it's just the basic:

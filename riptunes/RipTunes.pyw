@@ -1,4 +1,4 @@
-'''
+"""
 RipTunes transfers songs from iPod to your local machine.
 Copyright (C) 2009  Thierry Lam
 
@@ -14,7 +14,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
-'''
+"""
 
 import os
 import sys
@@ -26,16 +26,17 @@ from ManageRip import *
 
 NAME, ARTIST, ALBUM, LOCATION = range(4)
 
-'''
-The Main Qt Application
 
-Usage:
-    All Platforms:
-        python RipTunes.pyw
-    Windows:
-        <double-click on> RipTunes.pyw
-'''
 class MainWindow(QMainWindow):
+    """
+    The Main Qt Application
+
+    Usage:
+        All Platforms:
+            python RipTunes.pyw
+        Windows:
+            <double-click on> RipTunes.pyw
+    """
 
     def __init__(self, app):
         QMainWindow.__init__(self)
@@ -104,19 +105,23 @@ class MainFrame(QFrame):
         comboBox.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
         return comboBox
 
-    '''
-    Browse button slot, opens a folder browser when the Browse button is clicked
-    '''
     def browse(self):
+        """
+        Browse button slot, opens a folder browser when the Browse button is 
+        clicked.
+        """
+
         destination = QFileDialog.getExistingDirectory(self, "Select Destination Folder", QDir.currentPath())
         self.directoryComboBox.addItem(destination)
         self.directoryComboBox.setCurrentIndex(self.directoryComboBox.currentIndex() + 1)
 
-    '''
-    Populates the tunes table.  The table is populated at start-up, when artist or ablum name is selected.
-    @param tunes, the list of tunes used to populate the table
-    '''
     def populateTable(self, tunes):
+        """
+        Populates the tunes table.  The table is populated at start-up, when 
+        artist or ablum name is selected.
+        @param tunes, the list of tunes used to populate the table
+        """
+
         self.tableWidget.clear()
         self.tableWidget.setSortingEnabled(False)
         self.tableWidget.setRowCount(len(tunes))
@@ -177,10 +182,11 @@ class MainFrame(QFrame):
         self.tableWidget.setColumnWidth(1, 200)
         self.tableWidget.setColumnWidth(2, 200)
 
-    '''
-    Create the status bar along with the progress bar in it.
-    '''
     def createStatusBar(self):
+        """
+        Create the status bar along with the progress bar in it.
+        """
+
         self.progressBar = QProgressBar(self)
         self.progressBar.setTextVisible(True)
         self.statusBar = QStatusBar(self)
@@ -190,11 +196,12 @@ class MainFrame(QFrame):
 
         return self.statusBar
 
-    '''
-    Create two QListWidgets side by side, one represents the artist 
-    and the album for the other
-    '''
     def createListWidgets(self):
+        """
+        Create two QListWidgets side by side, one represents the artist 
+        and the album for the other.
+        """
+
         layout = QGridLayout()
         self.artistList = QListWidget()
         self.albumList = QListWidget()
@@ -217,12 +224,13 @@ class MainFrame(QFrame):
 
         return layout
 
-    '''
-    SLOT for the artist QListWidget
-    Populate the album QListWidget based on the artist selected.
-    Show the tunes from the selected artist in the table
-    '''
     def artistSelected(self):
+        """
+        SLOT for the artist QListWidget
+        Populate the album QListWidget based on the artist selected.
+        Show the tunes from the selected artist in the table
+        """
+
         # Do nothing when focus is switching between QListWidget
         if not self.artistList.currentItem():
             return
@@ -242,11 +250,12 @@ class MainFrame(QFrame):
         self.albumList.clear()
         self.populateTable(tune_list)
 
-    '''
-    SLOT for the album QListWidget
-    Show the tunes from the selected album
-    '''
     def albumSelected(self):
+        """
+        SLOT for the album QListWidget
+        Show the tunes from the selected album
+        """
+
         # Do nothing when focus is switching between QListWidget
         if not self.albumList.currentItem() or not self.artistList.currentItem():
             return
@@ -262,10 +271,11 @@ class MainFrame(QFrame):
 
         self.populateTable(tune_list)
 
-    '''
-    Rip button slot, it copies the selected tunes to the destination folder
-    '''
     def rip(self):
+        """
+        Rip button slot, it copies the selected tunes to the destination folder
+        """
+
         self.modeLabel.setText("Ripping tunes")
         self.statusBar.reformat()
         step = 0

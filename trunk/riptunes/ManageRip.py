@@ -1,4 +1,4 @@
-'''
+"""
 RipTunes transfers songs from iPod to your local machine.
 Copyright (C) 2009  Thierry Lam
 
@@ -14,20 +14,24 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
-'''
+"""
+
+import logging
+import logging.handlers
 import os
 import sys
 import shutil
-import logging
-import logging.handlers
 
 from PyQt4 import QtCore
+
 from Tune import *
 
-'''
-Browse through the ipod's subfolders and copy the tunes to your local file system
-'''
+
 class ManageRip:
+    """
+    Browse through the ipod's subfolders and copy the tunes to your local 
+    file system
+    """
 
     def __init__(self):
         self.logger = logging.getLogger("RipTunesLogger")
@@ -38,10 +42,8 @@ class ManageRip:
         self.logger.addHandler(handler)
         self.root_path = self.locate_ipod()
 
-    '''
-    Find the ipod music path on the system
-    '''
     def locate_ipod(self):
+        """Find the ipod music path on the system"""
         control_dir = "iPod_Control"
         music_dir = "Music"
         base_path = ""
@@ -78,29 +80,30 @@ class ManageRip:
         
         return ""
 
-    '''
-    If the destination directory does not exist, create it
-    @param destination_dir, the destination directory to validete
-    '''
     def validate_dir(self, destination_dir):
+        """
+        If the destination directory does not exist, create it
+        @param destination_dir, the destination directory to validete
+        """
+
         if not os.path.isdir(destination_dir):
             os.makedirs(destination_dir)
 
-    '''
-    Return the number of files on the ipod
-    '''
     def numFiles(self):
+        """Return the number of files on the ipod"""
         numfiles = 0
         for root, dirs, files in os.walk(self.root_path):
             numfiles += len(files)
         return numfiles
 
-    '''
-    Return a dictionary of Tunes from by reading all mp3s from root_path.
-    The key is the full_path of the tune and associated value is the Tune object
-    @param root_path the base location where the mp3s reside
-    '''
     def tunes(self, pbar, parent):
+        """
+        Return a dictionary of Tunes from by reading all mp3s from root_path.
+        The key is the full_path of the tune and associated value is the Tune 
+        object.
+        @param root_path the base location where the mp3s reside
+        """
+
         step = 0
         tunes_dict = {}
         numfiles = self.numFiles()
@@ -117,7 +120,10 @@ class ManageRip:
                         tunes_dict[tune_path] = tune
                     else:
                         self.logger.warning("Invalid tune is " + tune_path)
-                # Increment the progress bar, processEvents() have to be called on Mac so that the progress can be seen
+                """
+                Increment the progress bar, processEvents() have to be called
+                on Mac so that the progress can be seen
+                """
                 step += 1
                 pbar.setValue(step)
                 parent.getApp().processEvents()
@@ -125,14 +131,17 @@ class ManageRip:
         self.logger.info("Dictionary creation complete")
         return tunes_dict
 
-    '''
-    Rip a single tune from it's source location on the ipod to it's destination folder.
-    If the destination path does not exist, it will construct it in the following format:
-    <base-dest>/<artist>/<tune>
-    @param tune, the current Tune to be ripped
-    @param base_dest, the base folder destination where the tune will go
-    '''
+
     def rip(self, tune, base_dest):
+        """
+        Rip a single tune from it's source location on the ipod to it's 
+        destination folder.  If the destination path does not exist, it 
+        will construct it in the following format:
+        <base-dest>/<artist>/<tune>
+        @param tune, the current Tune to be ripped
+        @param base_dest, the base folder destination where the tune will go
+        """
+
         # Log full tune path
         self.logger.info("Source: " + tune.full_path())
 

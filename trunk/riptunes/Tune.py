@@ -1,4 +1,4 @@
-'''
+"""
 RipTunes transfers songs from iPod to your local machine.
 Copyright (C) 2009  Thierry Lam
 
@@ -14,13 +14,13 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
-'''
+"""
 
 import os
 import string
 
-from MP3Tag import *
 from M4ATag import *
+from MP3Tag import *
 
 class Tune:
 
@@ -36,8 +36,8 @@ class Tune:
     def get_tag(self):
         return self.tag
 
-    # Return false if file is not mp3 or m4a
     def valid(self):
+        """Return False if file is not mp3 or m4a"""
         if self.extension == ".mp3":
             return self.tag.valid()
         elif self.tag == None:
@@ -59,18 +59,20 @@ class Tune:
             return "UnknownTitle"
         return self.post(self.tag.get_title())
 
-    # Return the type of the tune, .m4a or .mp3
     def type(self):
+        """Return the type of the tune, .m4a or .mp3"""
         return self.extension
 
-    # Return the ipod path
     def full_path(self):
+        """Return the ipod path"""
         return self.path
 
-    # Replace instances of "/\:" with "-"
-    # Replace instances of "?*" with ""
-    # Also remove trailing whitespaces
     def post(self, value):
+        """
+        Replace instances of "/\:" with "-"
+        Replace instances of "?*" with ""
+        Also remove trailing whitespaces
+        """
         old = ""
         new = "-"
         if value.find("/") >= 0:

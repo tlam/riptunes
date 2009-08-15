@@ -1,4 +1,3 @@
-  # Install [http://ruby-mp3info.rubyforge.org/ ruby-mp3info] library to read the mp3 tags.
-  {{{ gem install ruby-mp3info }}}
+  # Install [http://ruby-mp3info.rubyforge.org/ ruby-mp3info] library to read the mp3 tags. {{{ gem install ruby-mp3info }}}
   # Install MP4Info to read m4a files
   {{{ gem install MP4Info }}}

@@ -1,2 +1,2 @@
-Try the ruby-mp3info library to read the mp3 tags:
-http://ruby-mp3info.rubyforge.org/
+  # Install [http://ruby-mp3info.rubyforge.org/ ruby-mp3info] library to read the mp3 tags.
+  {{{ gem install ruby-mp3info }}}

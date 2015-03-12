@@ -1,0 +1,1 @@
+RipTunes is a multi-platform Python program which uses Qt as an interface to transfer songs from iPod to your local machine.  The program runs on Windows, Ubuntu, Mac OS X 10.4+.
